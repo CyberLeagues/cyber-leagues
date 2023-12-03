@@ -9,4 +9,4 @@ Instrukcja gita:
 - prześli na githuba `git push` przy pierwszym pushu będzie potrzebna wklejenie komendy zasugerowanej przez gita
 - stwórz pull request na githubie
 - poczekaj aż inni zrobią review
-- zrób merge klikając guzik na githubie
+- zrób squash merge klikając guzik na githubie
