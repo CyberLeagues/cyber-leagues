@@ -20,5 +20,10 @@ public class Liga {
 
     @Column(name = "Game")
     private String game;
+
+
+
+
+
 }
 
