@@ -16,4 +16,6 @@ public class Team {
 
     @Column(name = "Name")
     private String name;
+
+
 }
