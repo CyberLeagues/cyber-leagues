@@ -20,16 +20,12 @@ public class MainPageController {
     public String getMainPage(Model model)
     {
         model.addAttribute("Ligi",ligaService.getLigaList());
-        return "template";
+        return "index";
     }
 
 
 
-    @GetMapping("/cards")
-    public String getCards()
-    {
-        return "cards";
-    }
+
 
 
 }
