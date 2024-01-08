@@ -14,11 +14,5 @@ public class MainPageController {
 
 
 
-    @GetMapping("/cards")
-    public String getCards()
-    {
-        return "cards";
-    }
-
 
 }
