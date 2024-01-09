@@ -1,31 +1,33 @@
 <nav class="navbar navbar-expand-lg bg-light" th:fragment="navibar">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">CyberLeague</a>
+        <a class="navbar-brand" href="/leagues?game=All">CyberLeague</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">LOL</a>
+                    <a class="nav-link active" aria-current="page" href="/leagues?game=LeagueOfLegends">LOL</a>
                 </li>
+
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">Dota 2</a>
+                    <a class="nav-link active" href="/leagues?game=Dota2">Dota 2</a>
                 </li>
+
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">CS:GO</a>
+                    <a class="nav-link active" href="/leagues?game=CSGO">CS:GO</a>
                 </li>
+
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">Valorant</a>
+                    <a class="nav-link active" href="/leagues?game=Valorant">Valorant</a>
                 </li>
+
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">Rocket League</a>
+                    <a class="nav-link active" href="/leagues?game=RocketLeague">Rocket League</a>
                 </li>
             </ul>
-<!--            <form class="d-flex" role="search">-->
-<!--                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">-->
-<!--                <button class="btn btn-outline-success" type="submit">Search</button>-->
-<!--            </form>-->
+
             <div class="d-flex">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
