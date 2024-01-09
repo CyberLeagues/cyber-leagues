@@ -6,10 +6,13 @@ import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.web.SecurityFilterChain;
+import pl.cyberleagues.cyberleaguesmodule.services.OAuth2UserService;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
+
+    private OAuth2UserService service;
 
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -18,8 +21,8 @@ public class SecurityConfig {
                     authorize.requestMatchers("/**").permitAll();
                     authorize.anyRequest().authenticated();
                 })
-                .formLogin(Customizer.withDefaults())
-                .oauth2Login(Customizer.withDefaults())
+                .oauth2Login(oauth2 -> oauth2
+                        .userInfoEndpoint(userInfo -> userInfo.oidcUserService(service)))
                 .oidcLogout();
 
         http.logout(logout -> logout
