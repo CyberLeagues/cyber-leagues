@@ -27,5 +27,11 @@ public class Liga {
         this.name = name;
         this.game = game;
     }
+
+    public Liga(Long id, String name, String game) {
+        this.id = id;
+        this.name = name;
+        this.game = game;
+    }
 }
 

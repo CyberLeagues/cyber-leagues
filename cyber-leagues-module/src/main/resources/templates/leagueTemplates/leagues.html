@@ -11,12 +11,12 @@
 <nav th:replace="~{navbar::navibar}"></nav>
 
 
-<div class="card" th:each="liga : ${ligi}">
+<div class="card" th:each="liga : ${ligi}" th:onclick="'window.location.href = \'/game?ligaId=' + ${liga.getId()} + '\''">
+<!--    th:onclick="'window.location.href = @{/game?ligaId={id}(id=${deviceEvent.id})} + '\''"-->
     <img th:src="@{/images/__${liga.getGame()}__.png}" class="card-img-top" alt="liga">
     <div class="card-body">
         <h5 class="card-title" th:text="${liga.getName()}">Tytuł ...</h5>
         <p class="card-text" >Treść ...</p>
-        <p class="card-text" th:if="${liga.getName().contains('CSGO')}">ifik.</p>
     </div>
 </div>
 
