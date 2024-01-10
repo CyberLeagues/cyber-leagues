@@ -22,10 +22,7 @@ public class LigaController {
     @GetMapping("/leagues")
     public String getLeagueByGame(Model model,@RequestParam(value = "game") String leagueGame)
     {
-        if(leagueGame.equals("All"))
-            model.addAttribute("ligi",ligaService.getLigaList());
-        else
-            model.addAttribute("ligi",ligaService.getLigaByGame(leagueGame));
+        model.addAttribute("ligi",ligaService.getLigaByGame(leagueGame));
         return "leagueTemplates/leagues";
     }
 

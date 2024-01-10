@@ -47,7 +47,7 @@ public class ListHolderContainer {
             new Liga(7L,"Turniej RocketLeague!","RocketLeague"),
             new Liga(2L,"Turniej CSGO2!","CSGO"),
             new Liga(1L,"Turniej CSGO2!","CSGO"),
-            new Liga("Turniej CSGO2!","CSGO")
+            new Liga(1L,"Turniej CSGO2!","CSGO")
     ));
 
 

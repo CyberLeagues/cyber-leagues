@@ -12,7 +12,6 @@
 
 
 <div class="card" th:each="liga : ${ligi}" th:onclick="'window.location.href = \'/game?ligaId=' + ${liga.getId()} + '\''">
-<!--    th:onclick="'window.location.href = @{/game?ligaId={id}(id=${deviceEvent.id})} + '\''"-->
     <img th:src="@{/images/__${liga.getGame()}__.png}" class="card-img-top" alt="liga">
     <div class="card-body">
         <h5 class="card-title" th:text="${liga.getName()}">Tytuł ...</h5>
