@@ -21,9 +21,17 @@ public class Liga {
     @Column(name = "Game")
     private String game;
 
+    public Liga() {}
 
+    public Liga(String name, String game) {
+        this.name = name;
+        this.game = game;
+    }
 
-
-
+    public Liga(Long id, String name, String game) {
+        this.id = id;
+        this.name = name;
+        this.game = game;
+    }
 }
 

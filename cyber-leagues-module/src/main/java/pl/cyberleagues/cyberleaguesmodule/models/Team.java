@@ -18,4 +18,16 @@ public class Team {
     private String name;
 
 
+    //team powinien miec liste userow ktore sa zapisane do niego i by potem moc ich wyswietlic
+
+    public Team() {}
+
+    public Team(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public Team(String name) {
+        this.name = name;
+    }
 }
