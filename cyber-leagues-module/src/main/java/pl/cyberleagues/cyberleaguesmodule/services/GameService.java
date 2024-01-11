@@ -14,9 +14,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-@RequiredArgsConstructor
 public class GameService {
-
 
 
     private final List<Game> ligaList = ListHolderContainer.gameList;
@@ -27,9 +25,9 @@ public class GameService {
         return ligaList;
     }
 
-    public List<Game> findGameById(Long id)
+    public List<Game> findGameByLigaId(Long ligaID)
     {
-        return ligaList.stream().filter(game -> game.getLiga().getId()==id).collect(Collectors.toList());
+        return ligaList.stream().filter(game -> game.getLiga().getId()==ligaID).collect(Collectors.toList());
     }
 
 

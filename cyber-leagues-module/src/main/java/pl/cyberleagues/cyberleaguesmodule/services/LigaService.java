@@ -11,7 +11,6 @@ import java.util.stream.Collectors;
 @Service
 public class LigaService {
 
-    //to potem zamienimy na funkcje gdzie bedziesz mogl dodawac ligi...
     private final List<Liga> ligaList = ListHolderContainer.ligaList;
 
     public List<Liga> getLigaList()
@@ -19,7 +18,7 @@ public class LigaService {
         return ligaList;
     }
 
-    public List<Liga> getLigaByGame(String gameName)
+    public List<Liga> getLigaByGameName(String gameName)
     {
 
         return ligaList.stream().filter(liga -> liga.getGame().equals(gameName)).collect(Collectors.toList());

@@ -2,19 +2,29 @@ package pl.cyberleagues.cyberleaguesmodule.services;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import pl.cyberleagues.cyberleaguesmodule.models.Game;
+import pl.cyberleagues.cyberleaguesmodule.listobjectfolder.ListHolderContainer;
 import pl.cyberleagues.cyberleaguesmodule.models.Team;
-import pl.cyberleagues.cyberleaguesmodule.repositories.GameRepository;
-import pl.cyberleagues.cyberleaguesmodule.repositories.TeamRepository;
+import java.util.Set;
 
-import java.util.List;
 
 @Service
-@RequiredArgsConstructor
 public class TeamService {
-    private final TeamRepository repository;
 
-    public List<Team> getTeams(){
-        return repository.findAll();
+
+    private final Set<Team> teamSet = ListHolderContainer.setofTeam;
+
+    /**
+     *  ze strony z ktorej bedziemy przechodzic do team, znajduje sie obiekt Game
+     *  ktory przechowuje tez id teamu, za pomoca tego id bedziemy przechodzic do strony z podanym teamem
+     *  wieec: przeszukaj liste i znajdz taki team ktorego id jest rowne temu co przyszlo ze strony,
+     *  jesli nie znajdzie to null,
+     * @param teamID
+     * @return
+     */
+
+    public Team findTeamById(Long teamID)
+    {
+        return teamSet.stream().filter(team -> team.getId().equals(teamID)).findFirst().orElse(null);
     }
+
 }
