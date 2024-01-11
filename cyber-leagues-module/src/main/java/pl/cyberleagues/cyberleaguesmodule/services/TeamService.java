@@ -11,7 +11,7 @@ import java.util.Set;
 public class TeamService {
 
 
-    private final Set<Team> teamSet = ListHolderContainer.setofTeam;
+//    private final Set<Team> teamSet = ListHolderContainer.setofTeam;
 
     /**
      *  ze strony z ktorej bedziemy przechodzic do team, znajduje sie obiekt Game
@@ -22,9 +22,9 @@ public class TeamService {
      * @return
      */
 
-    public Team findTeamById(Long teamID)
-    {
-        return teamSet.stream().filter(team -> team.getId().equals(teamID)).findFirst().orElse(null);
-    }
+//    public Team findTeamById(Long teamID)
+//    {
+//        return teamSet.stream().filter(team -> team.getId().equals(teamID)).findFirst().orElse(null);
+//    }
 
 }

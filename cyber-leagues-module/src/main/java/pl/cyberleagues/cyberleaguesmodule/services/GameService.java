@@ -1,15 +1,10 @@
 package pl.cyberleagues.cyberleaguesmodule.services;
 
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.cyberleagues.cyberleaguesmodule.listobjectfolder.ListHolderContainer;
-import pl.cyberleagues.cyberleaguesmodule.models.Game;
-import pl.cyberleagues.cyberleaguesmodule.models.Liga;
-import pl.cyberleagues.cyberleaguesmodule.models.Team;
+import pl.cyberleagues.cyberleaguesmodule.models.Match;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -17,18 +12,18 @@ import java.util.stream.Collectors;
 public class GameService {
 
 
-    private final List<Game> ligaList = ListHolderContainer.gameList;
+//    private final List<Match> ligaList = ListHolderContainer.MATCH_LIST;
 
 
-    public List<Game> getGameList()
-    {
-        return ligaList;
-    }
-
-    public List<Game> findGameByLigaId(Long ligaID)
-    {
-        return ligaList.stream().filter(game -> game.getLiga().getId()==ligaID).collect(Collectors.toList());
-    }
+//    public List<Match> getGameList()
+//    {
+//        return ligaList;
+//    }
+//
+//    public List<Match> findGameByLigaId(Long ligaID)
+//    {
+//        return ligaList.stream().filter(game -> game.getLeague().getId()==ligaID).collect(Collectors.toList());
+//    }
 
 
 }
