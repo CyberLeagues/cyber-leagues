@@ -14,24 +14,8 @@ import java.util.UUID;
 
 @Data
 @Entity
+@Table(name = "users")
 public class User implements UserDetails {
-
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    private Long id;
-//
-//    @Column(name = "Name")
-//    private String name;
-//
-//    @Column(name = "Email")
-//    private String email;
-//
-//    @Column(name = "Password")
-//    private String password;
-//
-//    @ManyToOne
-//    @JoinColumn(name = "Team_Id", nullable = false)
-//    private Team team;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
