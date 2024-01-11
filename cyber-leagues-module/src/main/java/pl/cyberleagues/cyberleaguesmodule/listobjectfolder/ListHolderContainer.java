@@ -4,9 +4,7 @@ import pl.cyberleagues.cyberleaguesmodule.models.Game;
 import pl.cyberleagues.cyberleaguesmodule.models.Liga;
 import pl.cyberleagues.cyberleaguesmodule.models.Team;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 public class ListHolderContainer {
 
@@ -50,7 +48,7 @@ public class ListHolderContainer {
             new Liga(8L,"Turniej CSGO2!","CSGO")
     ));
 
-    public static final List<Team> teamList = new ArrayList<>(List.of(
+    public static final Set<Team> setofTeam = new HashSet<>(Set.of(
             new Team(1L,"KutasTeamLiga1"),
             new Team(2L,"KutasTeamLiga2")
     ));

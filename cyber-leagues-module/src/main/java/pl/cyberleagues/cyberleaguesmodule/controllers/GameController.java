@@ -18,11 +18,10 @@ public class GameController {
 
     private final GameService service;
 
-
     @GetMapping("/game")
-    public String getGameById(Model model, @RequestParam(value = "ligaId") Long ligaId)
+    public String getGameByLigaId(Model model, @RequestParam(value = "ligaId") Long ligaId)
     {
-        model.addAttribute("games",service.findGameById(ligaId));
+        model.addAttribute("games",service.findGameByLigaId(ligaId));
         return "gameTemplates/games";
     }
 
