@@ -1,6 +1,7 @@
 package pl.cyberleagues.cyberleaguesmodule.controllers;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,15 +12,9 @@ import pl.cyberleagues.cyberleaguesmodule.services.TeamService;
 
 import java.util.List;
 
-@RestController
-@RequestMapping("/team")
+@Controller
 @RequiredArgsConstructor
 public class TeamController {
 
-    private final TeamService service;
-
-    @GetMapping("/all")
-    public List<Team> teams(){
-        return service.getTeams();
-    }
+    //potem sie dopisze
 }
