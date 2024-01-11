@@ -1,0 +1,17 @@
+.team-card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+.team-name {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.vs {
+    font-size: 24px;
+    font-weight: bold;
+}
+.team-card.team-win {
+    background-color: lightgreen; /* Ustawienie koloru tła na zielony */
+}

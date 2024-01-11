@@ -36,4 +36,25 @@ public class Game {
 
     @Column(name = "Score_B")
     private Integer scoreB;
+
+    public Game() {}
+
+    public Game(Long id, Liga liga, Team team1, Team team2, Date date, Integer scoreA, Integer scoreB) {
+        this.id = id;
+        this.liga = liga;
+        this.team1 = team1;
+        this.team2 = team2;
+        this.date = date;
+        this.scoreA = scoreA;
+        this.scoreB = scoreB;
+    }
+
+    public Game(Liga liga, Team team1, Team team2, Date date, Integer scoreA, Integer scoreB) {
+        this.liga = liga;
+        this.team1 = team1;
+        this.team2 = team2;
+        this.date = date;
+        this.scoreA = scoreA;
+        this.scoreB = scoreB;
+    }
 }

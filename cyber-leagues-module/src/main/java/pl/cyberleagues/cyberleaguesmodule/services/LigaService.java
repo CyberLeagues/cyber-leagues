@@ -1,6 +1,7 @@
 package pl.cyberleagues.cyberleaguesmodule.services;
 
 import org.springframework.stereotype.Service;
+import pl.cyberleagues.cyberleaguesmodule.listobjectfolder.ListHolderContainer;
 import pl.cyberleagues.cyberleaguesmodule.models.Liga;
 
 import java.util.ArrayList;
@@ -11,16 +12,7 @@ import java.util.stream.Collectors;
 public class LigaService {
 
     //to potem zamienimy na funkcje gdzie bedziesz mogl dodawac ligi...
-    private final List<Liga> ligaList = new ArrayList<>(List.of(
-            new Liga("Aram Turniej w League Of Legends!","LeagueOfLegends"),
-            new Liga("Aram Turniej2 w League Of Legends!","LeagueOfLegends"),
-            new Liga("Turniej Dota2!","Dota2"),
-            new Liga("Turniej Valorant!","Valorant"),
-            new Liga("Turniej RocketLeague!","RocketLeague"),
-            new Liga("Turniej CSGO2!","CSGO"),
-            new Liga("Turniej CSGO2!","CSGO"),
-            new Liga("Turniej CSGO2!","CSGO")
-    ));
+    private final List<Liga> ligaList = ListHolderContainer.ligaList;
 
     public List<Liga> getLigaList()
     {
