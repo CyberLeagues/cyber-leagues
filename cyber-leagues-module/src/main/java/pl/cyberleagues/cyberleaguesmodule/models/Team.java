@@ -1,33 +1,29 @@
 package pl.cyberleagues.cyberleaguesmodule.models;
 
 import jakarta.persistence.*;
+import lombok.Data;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
+@Data
 @Entity
-@Table(name = "Team")
-@Setter
-@Getter
 public class Team {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "Name")
+    @OneToOne
+    private User owner;
+
     private String name;
 
+    @OneToMany
+    private List<User> players;
 
-    //team powinien miec liste userow ktore sa zapisane do niego i by potem moc ich wyswietlic
-
-    public Team() {}
-
-    public Team(Long id, String name) {
-        this.id = id;
-        this.name = name;
-    }
-
-    public Team(String name) {
-        this.name = name;
-    }
+    @OneToMany
+    private List<Match> matches;
 }

@@ -16,12 +16,12 @@ public class LigaController {
 
     private final LigaService ligaService;
 
-    @GetMapping("/leagues")
-    public String getLeaguesByGame(Model model,@RequestParam(value = "game") String leagueGame)
-    {
-        model.addAttribute("ligi",ligaService.getLigaByGameName(leagueGame));
-        return "leagueTemplates/leagues";
-    }
+//    @GetMapping("/leagues")
+//    public String getLeaguesByGame(Model model,@RequestParam(value = "game") String leagueGame)
+//    {
+//        model.addAttribute("ligi",ligaService.getLigaByGameName(leagueGame));
+//        return "leagueTemplates/leagues";
+//    }
 
 
 
