@@ -65,6 +65,9 @@ public class OAuth2UserService extends OidcUserService {
         user.setUsername(userInfo.email());
         user.setPicture(userInfo.picture());
         user.setAuthorities(authorities);
+        user.setAccountNonExpired(true);
+        user.setAccountNonLocked(true);
+        user.setCredentialsNonExpired(true);
         userRepository.save(user);
     }
 
