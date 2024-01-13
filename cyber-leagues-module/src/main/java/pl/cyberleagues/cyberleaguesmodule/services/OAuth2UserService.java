@@ -7,17 +7,22 @@ import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
 import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.stereotype.Service;
 import pl.cyberleagues.cyberleaguesmodule.dto.UserInfo;
+import pl.cyberleagues.cyberleaguesmodule.models.Authority;
 import pl.cyberleagues.cyberleaguesmodule.models.User;
+import pl.cyberleagues.cyberleaguesmodule.repositories.AuthorityRepository;
 import pl.cyberleagues.cyberleaguesmodule.repositories.UserRepository;
 
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
 public class OAuth2UserService extends OidcUserService {
 
     private final UserRepository userRepository;
+    private final AuthorityRepository authorityRepository;
 
     @Override
     public OidcUser loadUser(OidcUserRequest userRequest) throws OAuth2AuthenticationException {
@@ -50,12 +55,16 @@ public class OAuth2UserService extends OidcUserService {
     }
 
     private void registerNewUser(OidcUserRequest userRequest, UserInfo userInfo) {
+        Authority authority = authorityRepository.findAuthorityByAuthorityIgnoreCase("USER");
+        Set<Authority> authorities = Set.of(authority);
+
         User user = new User();
         user.setProvider(userRequest.getClientRegistration().getRegistrationId());
         user.setProviderId(userInfo.id());
         user.setName(userInfo.name());
         user.setUsername(userInfo.email());
         user.setPicture(userInfo.picture());
+        user.setAuthorities(authorities);
         userRepository.save(user);
     }
 

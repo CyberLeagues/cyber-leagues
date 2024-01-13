@@ -13,8 +13,7 @@ import java.util.UUID;
 public class Authority implements GrantedAuthority {
 
     @Id
-    @JdbcTypeCode(java.sql.Types.VARCHAR)
-    private UUID id;
+    private Long id;
 
     public String authority;
 }
