@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-light" th:fragment="navibar">
+<nav class="navbar navbar-expand-lg bg-light" th:fragment="navibar" xmlns:sec="http://www.w3.org/1999/xhtml">
     <div class="container-fluid">
         <a class="navbar-brand" href="/">CyberLeague</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,13 +28,22 @@
                 </li>
             </ul>
 
-            <div class="d-flex">
+            <div class="d-flex" sec:authorize="isAnonymous()">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Zaloguj</a>
+                        <a class="nav-link active" th:href="@{/login}">Zaloguj</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="#">Zarejestruj</a>
+                    </li>
+                </ul>
+            </div>
+
+
+            <div class="d-flex" sec:authorize="isAuthenticated()">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" th:href="@{/logout}">Wyloguj</a>
                     </li>
                 </ul>
             </div>
