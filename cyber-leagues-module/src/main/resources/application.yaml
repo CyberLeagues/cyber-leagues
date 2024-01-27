@@ -11,7 +11,7 @@ spring:
 #          schema-generation:
 #            scripts:
 #              action: create
-#              create-target: create.sql
+#              create-target: create_test.sql
 #              create-source: metadata
 
   security:

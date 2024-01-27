@@ -1,15 +1,17 @@
 package pl.cyberleagues.cyberleaguesmodule.models;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
 public class League {
 
     @Id
@@ -31,7 +33,8 @@ public class League {
 
     private String description;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY,mappedBy = "league")
+    @JsonIgnoreProperties("league")
     private List<Match> matches;
 //    Todo: implement after others models will be implemented
 //    private Score scores;
