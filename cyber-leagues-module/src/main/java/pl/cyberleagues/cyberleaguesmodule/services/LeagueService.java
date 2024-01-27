@@ -3,6 +3,7 @@ package pl.cyberleagues.cyberleaguesmodule.services;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.cyberleagues.cyberleaguesmodule.models.League;
+import pl.cyberleagues.cyberleaguesmodule.models.User;
 import pl.cyberleagues.cyberleaguesmodule.repositories.LeagueRepository;
 
 import java.util.List;
@@ -28,4 +29,9 @@ public class LeagueService {
     }
 
 
+    public League createLeague(League league, User user) {
+        league.setOwner(user);
+        league.setOpen(true);
+        return leagueRepository.save(league);
+    }
 }

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head th:replace="~{head::head}"></head>
+<body>
+<nav th:replace="~{navbar::navibar}"></nav>
+
+
+<div class="d-flex" sec:authorize="isAuthenticated()">
+    <a class="nav-link active" th:href="@{/league/create}">
+        <button type="button" class="btn btn-outline-success">Stwórz ligę</button>
+    </a>
+</div>
+
+</body>
+</html>

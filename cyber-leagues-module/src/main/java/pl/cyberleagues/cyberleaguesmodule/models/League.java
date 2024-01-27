@@ -30,6 +30,7 @@ public class League {
 
     private boolean isOpen;
 
+    @Enumerated(EnumType.ORDINAL)
     private Game game;
 
     private String description;

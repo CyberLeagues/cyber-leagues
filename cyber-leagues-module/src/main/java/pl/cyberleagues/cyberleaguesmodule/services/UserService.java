@@ -19,6 +19,8 @@ public class UserService {
         return repository.findAll();
     }
 
-
+    public User getUserByProviderId(String providerId){
+        return repository.findByProviderId(providerId);
+    }
 
 }
