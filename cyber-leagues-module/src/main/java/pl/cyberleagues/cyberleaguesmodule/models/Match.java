@@ -1,13 +1,10 @@
 package pl.cyberleagues.cyberleaguesmodule.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Data
 @Entity
@@ -20,6 +17,8 @@ public class Match {
 
     //todo: delete later for test
     @ManyToOne
+    @JoinColumn(name = "league_id")
+    @JsonIgnoreProperties("matches")
     private League league;
 
     @ManyToOne
