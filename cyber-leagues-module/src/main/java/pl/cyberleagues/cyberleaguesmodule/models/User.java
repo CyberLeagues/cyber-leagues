@@ -1,15 +1,18 @@
 package pl.cyberleagues.cyberleaguesmodule.models;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.List;
 import java.util.Set;
 
-@Data
 @Entity
 @Table(name = "users")
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class User implements UserDetails {
 
     @Id

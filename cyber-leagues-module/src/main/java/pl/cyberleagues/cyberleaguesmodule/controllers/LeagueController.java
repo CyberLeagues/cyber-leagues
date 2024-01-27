@@ -28,7 +28,7 @@ public class LeagueController {
     private final UserService userService;
 
     //,@RequestParam(value = "game") String leagueGame
-    @GetMapping("/leagues")
+    @GetMapping("/all")
     public String getLeaguesByGame(Model model)
     {
         model.addAttribute("leagues", leagueService.getAllAvailableLeagues());
@@ -36,7 +36,7 @@ public class LeagueController {
     }
 
 
-    @GetMapping("/league")
+    @GetMapping
     public String getLeagueByID(Model model,@RequestParam(value = "leagueId") Long leagueID)
     {
         System.out.println(leagueID);
@@ -54,11 +54,12 @@ public class LeagueController {
 
     @PostMapping("/create")
     public String creteSubmit(@ModelAttribute("league") League league, Model model, Principal principal){
+        User user = userService.getUserByProviderId(principal.getName());
+        leagueService.createLeague(league, user);
+
+        model.addAttribute("ownedLeagues", user.getOwnedLeagues());
         model.addAttribute("principal", principal);
         model.addAttribute("league", league);
-
-        User user = userService.getUserByProviderId(principal.getName());
-        league = leagueService.createLeague(league, user);
 
         return "leagueTemplates/manager";
     }

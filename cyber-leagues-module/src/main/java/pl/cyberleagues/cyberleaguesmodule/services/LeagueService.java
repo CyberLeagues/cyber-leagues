@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import pl.cyberleagues.cyberleaguesmodule.models.League;
 import pl.cyberleagues.cyberleaguesmodule.models.User;
 import pl.cyberleagues.cyberleaguesmodule.repositories.LeagueRepository;
+import pl.cyberleagues.cyberleaguesmodule.repositories.UserRepository;
 
 import java.util.List;
 
@@ -14,7 +15,7 @@ public class LeagueService {
 
 
     private final LeagueRepository leagueRepository;
-
+    private final UserRepository userRepository;
 
 
     public List<League> getAllAvailableLeagues()
@@ -29,9 +30,11 @@ public class LeagueService {
     }
 
 
-    public League createLeague(League league, User user) {
+    public void createLeague(League league, User user) {
         league.setOwner(user);
         league.setOpen(true);
-        return leagueRepository.save(league);
+        user.getOwnedLeagues().add(league);
+        leagueRepository.save(league);
+        userRepository.save(user);
     }
 }
