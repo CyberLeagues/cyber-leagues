@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/CyberLeagues
+    url: jdbc:mysql://localhost:3306/testowanie_logowania
     username: root
     password: ""
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -11,7 +11,7 @@ spring:
 #          schema-generation:
 #            scripts:
 #              action: create
-#              create-target: create.sql
+#              create-target: create_3.sql
 #              create-source: metadata
 
   security:

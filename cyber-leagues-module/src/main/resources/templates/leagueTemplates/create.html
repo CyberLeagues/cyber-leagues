@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head th:replace="~{head::head}"></head>
+<body>
+<nav th:replace="~{navbar::navibar}"></nav>
+
+<div class="container mt-5">
+    <form action="#" th:action="@{/league/create}" th:object="${league}" method="post">
+        <div class="form-group">
+            <label for="nazwa">Nazwa:</label>
+            <input th:field="*{name}" type="text" class="form-control" id="nazwa" placeholder="Enter nazwa" required>
+        </div>
+
+        <div class="form-group">
+            <label for="start">Start:</label>
+            <input th:field="*{starts}" type="datetime-local" class="form-control" id="start" required>
+        </div>
+
+        <div class="form-group">
+            <label for="maksymalnaLiczbaGraczy">Maksymalna Liczba Graczy:</label>
+            <input th:field="*{maxNumberOfTeams}" type="number" class="form-control" id="maksymalnaLiczbaGraczy" placeholder="Enter liczba graczy" required>
+        </div>
+
+        <div class="form-group">
+            <label for="gra">Gra:</label>
+            <select th:field="*{game}" class="form-control" id="gra" required>
+                <option th:each="gameType : ${T(pl.cyberleagues.cyberleaguesmodule.models.Game).values()}"
+                    th:value="${gameType}" th:text="${gameType}"></option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="opis">Opis:</label>
+            <textarea th:field="*{description}" class="form-control" id="opis" rows="3" placeholder="Enter opis" required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+</body>
+</html>
