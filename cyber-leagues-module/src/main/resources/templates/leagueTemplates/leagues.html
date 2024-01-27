@@ -10,8 +10,9 @@
 <body>
 <nav th:replace="~{navbar::navibar}"></nav>
 
+<!--podany endpoint localhost:.../league?ligaID=...-->
 
-<div class="card" th:each="league : ${ligi}" th:onclick="'window.location.href = \'/game?ligaId=' + ${league.getId()} + '\''">
+<div class="card" th:each="league : ${leagues}" th:onclick="'window.location.href = \'/league?leagueId=' + ${league.getId()} + '\''">
     <img th:src="@{/images/__${league.getGame()}__.png}" class="card-img-top" alt="league">
     <div class="card-body">
         <h5 class="card-title" th:text="${league.getName()}">Tytuł ...</h5>
