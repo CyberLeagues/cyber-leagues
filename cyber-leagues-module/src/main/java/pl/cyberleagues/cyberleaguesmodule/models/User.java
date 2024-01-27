@@ -22,7 +22,7 @@ public class User implements UserDetails {
     @ManyToOne
     private Team team;
 
-    @OneToMany
+    @ManyToMany
     private Set<Authority> authorities;
 
     private String password;

@@ -38,19 +38,19 @@ span {
 
 
 .carousel__face:nth-child(1) {
-    background-image: url("images/CSGO.png");
+    background-image: url("images/CS_GO_2.png");
     transform: rotateY(  0deg) translateZ(430px); }
 .carousel__face:nth-child(2) {
-    background-image: url("images/LeagueOfLegends.png");
+    background-image: url("images/LEAGUE_OF_LEGENDS.png");
     transform: rotateY( 40deg) translateZ(430px); }
 .carousel__face:nth-child(3) {
-    background-image: url("images/Valorant.png");
+    background-image: url("images/VALORANT.png");
     transform: rotateY( 80deg) translateZ(430px); }
 .carousel__face:nth-child(4) {
-    background-image: url("images/RocketLeague.png");
+    background-image: url("images/ROCKET_LEAGUE.png");
     transform: rotateY(120deg) translateZ(430px); }
 .carousel__face:nth-child(5) {
-    background-image: url("images/Dota2.png");
+    background-image: url("images/Dota_2.png");
     transform: rotateY(160deg) translateZ(430px); }
 .carousel__face:nth-child(6) {
     background-image: url("images/Apex.jpg");

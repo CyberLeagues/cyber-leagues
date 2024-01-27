@@ -28,4 +28,8 @@ public class UserService {
     }
 
 
+    public User getUserByProviderId(String providerId){
+        return repository.findByProviderId(providerId);
+    }
+
 }
