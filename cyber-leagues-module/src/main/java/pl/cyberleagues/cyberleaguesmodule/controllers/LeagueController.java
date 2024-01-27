@@ -54,11 +54,12 @@ public class LeagueController {
 
     @PostMapping("/create")
     public String creteSubmit(@ModelAttribute("league") League league, Model model, Principal principal){
+        User user = userService.getUserByProviderId(principal.getName());
+        leagueService.createLeague(league, user);
+
+        model.addAttribute("ownedLeagues", user.getOwnedLeagues());
         model.addAttribute("principal", principal);
         model.addAttribute("league", league);
-
-        User user = userService.getUserByProviderId(principal.getName());
-        league = leagueService.createLeague(league, user);
 
         return "leagueTemplates/manager";
     }
