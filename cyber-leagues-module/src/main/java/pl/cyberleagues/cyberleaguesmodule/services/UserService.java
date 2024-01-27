@@ -6,6 +6,7 @@ import pl.cyberleagues.cyberleaguesmodule.models.User;
 import pl.cyberleagues.cyberleaguesmodule.repositories.UserRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -18,7 +19,13 @@ public class UserService {
     {
         return repository.findAll();
     }
-
+    public  User getUserById(long id){
+        Optional<User> user = repository.findById(id);
+        if (user.isPresent()){
+            return user.get();
+        }
+        return null;
+    }
 
 
 }
