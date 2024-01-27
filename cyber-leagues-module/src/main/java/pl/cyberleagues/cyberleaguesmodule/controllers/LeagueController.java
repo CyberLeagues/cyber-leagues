@@ -28,7 +28,7 @@ public class LeagueController {
     private final UserService userService;
 
     //,@RequestParam(value = "game") String leagueGame
-    @GetMapping("/leagues")
+    @GetMapping("/all")
     public String getLeaguesByGame(Model model)
     {
         model.addAttribute("leagues", leagueService.getAllAvailableLeagues());
@@ -36,7 +36,7 @@ public class LeagueController {
     }
 
 
-    @GetMapping("/league")
+    @GetMapping
     public String getLeagueByID(Model model,@RequestParam(value = "leagueId") Long leagueID)
     {
         System.out.println(leagueID);
