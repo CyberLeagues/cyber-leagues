@@ -41,4 +41,17 @@ public class TeamService {
         return teamRepository.findAll();
     }
 
+
+    public void deletePlayer(User user){
+        Team team = user.getTeam();
+
+        List<User> players = team.getPlayers();
+        players.remove(user);
+
+        team.setPlayers(players);
+        user.setTeam(null);
+        teamRepository.save(team);
+        userRepository.save(user);
+
+    }
 }
