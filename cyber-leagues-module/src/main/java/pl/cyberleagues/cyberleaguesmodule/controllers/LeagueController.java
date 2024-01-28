@@ -5,15 +5,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pl.cyberleagues.cyberleaguesmodule.models.League;
-import pl.cyberleagues.cyberleaguesmodule.models.Match;
-import pl.cyberleagues.cyberleaguesmodule.models.Team;
 import pl.cyberleagues.cyberleaguesmodule.models.User;
 import pl.cyberleagues.cyberleaguesmodule.services.LeagueService;
-import pl.cyberleagues.cyberleaguesmodule.services.MatchService;
 import pl.cyberleagues.cyberleaguesmodule.services.UserService;
 
 import java.security.Principal;
-import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -23,11 +19,9 @@ public class LeagueController {
 
     private final LeagueService leagueService;
 
-    private final MatchService matchService;
-
     private final UserService userService;
 
-    //,@RequestParam(value = "game") String leagueGame
+
     @GetMapping("/all")
     public String getLeaguesByGame(Model model)
     {
@@ -37,11 +31,9 @@ public class LeagueController {
 
 
     @GetMapping
-    public String getLeagueByID(Model model,@RequestParam(value = "leagueId") Long leagueID)
+    public String getLeagueByID(Model model, @RequestParam(value = "leagueId") Long leagueID)
     {
-        System.out.println(leagueID);
         model.addAttribute("league", leagueService.getLeagueByID(leagueID));
-
         return "leagueTemplates/league";
     }
 
