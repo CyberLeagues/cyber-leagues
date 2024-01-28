@@ -23,7 +23,7 @@
                     <span>Rozpoczyna się o:</span>
                     <p class="card-text" th:text="${league.starts}"><small class="text-body-secondary"></small></p>
 <!--                    zmienić link-->
-                    <a th:href="@{/league/league(leagueId=${league.id})}" class="btn btn-primary stretched-link">
+                    <a th:href="@{/league/matches(leagueId=${league.id})}" class="btn btn-primary stretched-link">
                         Dowiedź się więcej
                     </a>
                 </div>

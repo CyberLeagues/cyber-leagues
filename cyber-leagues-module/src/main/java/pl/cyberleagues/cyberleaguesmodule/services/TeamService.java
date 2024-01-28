@@ -6,6 +6,7 @@ import pl.cyberleagues.cyberleaguesmodule.listobjectfolder.ListHolderContainer;
 import pl.cyberleagues.cyberleaguesmodule.models.Team;
 import pl.cyberleagues.cyberleaguesmodule.repositories.TeamRepository;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -22,6 +23,10 @@ public class TeamService {
            return team.get();
        }
        return null;
+    }
+
+    public List<Team> getAll(){
+        return teamRepository.findAll();
     }
 
 }
