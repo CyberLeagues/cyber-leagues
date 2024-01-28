@@ -4,16 +4,40 @@
   <title>CyberLeague</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="karuzela.css">
+  <link rel="stylesheet" href="league/user.css">
 </head>
 <body>
 <nav th:replace="~{navbar::navibar}"></nav>
-
-  <div th:if="${user} != null">
-    <p><spa th:text="${user.name}"></spa></p>
-    <p th:if="${user.team != null}">Drużyna:<span th:text="user.team.name"> </span></p>
+<div class="center-container mt-5" >
+  <div class="container">
+    <div class="row profile-container bg-primary" th:if="${user} != null">
+      <div class="col-auto text-center pt-1">
+        <img th:src="@{${user.picture}}" alt="profilowe" class="profile-image" width="100" height="100" style="border-radius: 50%">
+      </div>
+      <div class="col profile-details">
+        <p><span class="display-4 text-white" th:text="${user.name}"></span></p>
+        <p th:if="${user.team != null}">Drużyna: <span th:text="${user.team.name}"></span></p>
+        <p th:if="${user.team == null}">brak drużyny</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="card match-card">
+          <div class="card-body">
+            <h5 class="card-title">Team A vs Team B</h5>
+            <p class="card-text">Wynik: 3 - 2</p>
+          </div>
+        </div>
+        <div class="card match-card">
+          <div class="card-body">
+            <h5 class="card-title">Team C vs Team D</h5>
+            <p class="card-text">Wynik: 1 - 1</p>
+          </div>
+        </div>
+        <!-- Dodaj więcej kart meczy tutaj -->
+      </div>
+    </div>
   </div>
-  <div th:if="${user} == null">
-    <p>brak druzyny</p>
-  </div>
+</div>
+<footer th:replace="~{footer::footer}"></footer>
 </body>
