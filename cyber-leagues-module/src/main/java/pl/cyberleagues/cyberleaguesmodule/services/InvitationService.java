@@ -21,7 +21,9 @@ public class InvitationService {
 
         invitation.setTeam(team);
         invitation.setUser(user);
-
-        invitationRepository.save(invitation);
+        Invitation invitationCheck = invitationRepository.findFirstByUserEqualsAndTeamEquals(user,team);
+        if ( !(invitationCheck.getUser().getId() == invitation.getUser().getId() && invitationCheck.getTeam().getId() == invitation.getTeam().getId())){
+            invitationRepository.save(invitation);
+        }
     }
 }

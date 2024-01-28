@@ -26,10 +26,10 @@ public class TeamController {
     @GetMapping("/{id}")
     public String getTeamById(Model model, Principal principal, @PathVariable Long id) {
         Team team = teamService.getTeamById(id);
-        if (principal==null){
-            return "/userTemplates/login";
+        User user = new User();
+        if (principal!=null){
+            user = userService.getUserByProviderId(principal.getName());
         }
-        User user = userService.getUserByProviderId(principal.getName());
         model.addAttribute("team", team);
         model.addAttribute("user", user);
         return "/teamTemplate/team";
