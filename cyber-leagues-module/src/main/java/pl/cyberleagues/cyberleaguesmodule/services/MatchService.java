@@ -31,7 +31,7 @@ public class MatchService {
 
     public void createMatch(Match match, League league, MatchFormDto matchFormDto) {
         Optional<Team> TeamA = teamRepository.findById(matchFormDto.getTeamAId());
-        Optional<Team> TeamB = teamRepository.findById(matchFormDto.getTeamAId());
+        Optional<Team> TeamB = teamRepository.findById(matchFormDto.getTeamBId());
 
         match.setTeamA(TeamA.orElse(null));
         match.setTeamB(TeamB.orElse(null));
