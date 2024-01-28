@@ -1,12 +1,17 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="pl" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head th:replace="~{head::head}"></head>
 <body>
 <nav th:replace="~{navbar::navibar}"></nav>
 
-<!--podany endpoint localhost:.../league?ligaID=...-->
 <div class="container mt-5">
-    <div class="card mb-3" th:each="league : ${leagues}">
+    <div class="d-flex" sec:authorize="isAuthenticated()">
+        <a class="nav-link active" th:href="@{/league/create}">
+            <button type="button" class="btn btn-outline-success">Stwórz ligę</button>
+        </a>
+    </div>
+
+    <div class="card mb-3" th:each="league : ${ownedLeagues}">
         <div class="row g-0">
             <div class="col-md-4">
                 <img th:src="@{/images/__${league.game}__.png}" class="img-fluid rounded-start" alt="league">
@@ -17,6 +22,7 @@
                     <p class="card-text" th:text="${league.description}"></p>
                     <span>Rozpoczyna się o:</span>
                     <p class="card-text" th:text="${league.starts}"><small class="text-body-secondary"></small></p>
+<!--                    zmienić link-->
                     <a th:href="@{/league/league(leagueId=${league.id})}" class="btn btn-primary stretched-link">
                         Dowiedź się więcej
                     </a>

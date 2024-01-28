@@ -29,23 +29,28 @@
             </ul>
 
             <div class="d-flex" sec:authorize="isAnonymous()">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" th:href="@{/login}">Zaloguj</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">Zarejestruj</a>
-                    </li>
+                <a class="nav-link active" th:href="@{/login}">
+                    <button type="button" class="btn btn-outline-success">Zaloguj</button>
+                </a>
+            </div>
+
+            <div class="dropdown p-2" sec:authorize="isAuthenticated()">
+                <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    Profil
+                </button>
+
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" th:href="@{/user/ownedLeagues}">Zarządzaj ligami</a></li>
+                    <li><a class="dropdown-item" th:href="@{/#}">Zaproszenia</a></li>
+                    <li><a class="dropdown-item" th:href="@{/#}">Moja drużyna</a></li>
+                    <li><a class="dropdown-item" th:href="@{/#}">Ustawienia</a></li>
                 </ul>
             </div>
 
-
             <div class="d-flex" sec:authorize="isAuthenticated()">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" th:href="@{/logout}">Wyloguj</a>
-                    </li>
-                </ul>
+                <a class="nav-link active" th:href="@{/logout}">
+                    <button type="button" class="btn btn-outline-danger">Wyloguj</button>
+                </a>
             </div>
         </div>
     </div>
