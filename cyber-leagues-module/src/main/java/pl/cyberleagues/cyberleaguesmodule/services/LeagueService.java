@@ -2,6 +2,7 @@ package pl.cyberleagues.cyberleaguesmodule.services;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import pl.cyberleagues.cyberleaguesmodule.models.Game;
 import pl.cyberleagues.cyberleaguesmodule.models.League;
 import pl.cyberleagues.cyberleaguesmodule.models.User;
 import pl.cyberleagues.cyberleaguesmodule.repositories.LeagueRepository;
@@ -21,6 +22,11 @@ public class LeagueService {
     public List<League> getAllAvailableLeagues()
     {
         return leagueRepository.findAll();
+    }
+
+    public List<League> getFilteredLeagueByGame(Game game)
+    {
+        return leagueRepository.getLeagueByGame(game);
     }
 
 
