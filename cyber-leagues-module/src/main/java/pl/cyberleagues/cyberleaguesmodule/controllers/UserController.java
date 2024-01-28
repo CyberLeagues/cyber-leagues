@@ -39,4 +39,12 @@ public class UserController {
 
         return "leagueTemplates/manager";
     }
+
+    @GetMapping("/team")
+    public String getOwnedTeam(Principal principal, Model model) {
+        User user = userService.getUserByProviderId(principal.getName());
+        model.addAttribute("team", user.getTeam());
+
+        return "teamTemplate/manager";
+    }
 }

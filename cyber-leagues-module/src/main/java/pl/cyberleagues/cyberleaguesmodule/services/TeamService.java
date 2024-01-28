@@ -4,7 +4,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.cyberleagues.cyberleaguesmodule.listobjectfolder.ListHolderContainer;
 import pl.cyberleagues.cyberleaguesmodule.models.Team;
+import pl.cyberleagues.cyberleaguesmodule.models.User;
 import pl.cyberleagues.cyberleaguesmodule.repositories.TeamRepository;
+import pl.cyberleagues.cyberleaguesmodule.repositories.UserRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,6 +18,7 @@ import java.util.Set;
 public class TeamService {
 
     private final TeamRepository teamRepository;
+    private final UserRepository userRepository;
 
     public Team getTeamById(Long id) {
        Optional<Team> team = teamRepository.findById(id);
@@ -25,6 +28,12 @@ public class TeamService {
        return null;
     }
 
+    public void createTeam(Team team, User user) {
+        team.setOwner(user);
+        user.setTeam(team);
+        teamRepository.save(team);
+        userRepository.save(user);
+    }
     public List<Team> getAll(){
         return teamRepository.findAll();
     }

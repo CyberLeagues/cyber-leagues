@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head th:replace="~{head::head}"></head>
+<body>
+<nav th:replace="~{navbar::navibar}"></nav>
+
+<div class="container mt-5">
+    <div class="d-flex" sec:authorize="isAuthenticated()" th:if="${team == null}">
+        <a class="nav-link active" th:href="@{/team/create}">
+            <button type="button" class="btn btn-outline-success">Stwórz Drużynę</button>
+        </a>
+    </div>
+
+
+</div>
+
+</body>
+</html>
