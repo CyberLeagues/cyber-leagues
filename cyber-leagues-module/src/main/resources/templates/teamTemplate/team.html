@@ -44,7 +44,9 @@
       </tbody>
     </table>
     <p th:if="${user} != null">
-      <button th:if="${team.owner.providerId} == ${user.providerId}">Zarządzaj</button>
+      <span th:if="${team.owner.providerId} == ${user.providerId}">
+        <button>Zarządzaj</button>
+      </span>
     </p>
   </div>
 </div>
