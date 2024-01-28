@@ -11,7 +11,71 @@
         </a>
     </div>
 
-
+    <div class="container">
+        <div class="row team-info" th:if="${team} != null">
+            <div class="col">
+                <h1 class="text-center mb-4 display-4" th:text="${team.name}"></h1>
+            </div>
+        </div>
+        <div class="row team-info" th:if="${team} != null">
+            <div class="col">
+                <h2 class="text-center mb-4">Zawodnicy</h2>
+                <table class="table table-striped">
+                    <tbody>
+                    <tr th:each="player : ${team.players}">
+                        <td th:text ="${player.name}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <p th:if="${user} != null" class="text-center">
+          <span th:if="${team.owner.providerId} == ${user.providerId}">
+            <a th:href="@{/team/manage}" class="btn btn-primary">
+              Zarządzaj
+            </a>
+          </span>
+                </p>
+            </div>
+            <div class="col">
+                <h2 class="text-center mb-4">Historia Meczów</h2>
+                <div class="container" th:each="match : ${team.matches}" th:if="${team.matches.size() > 0}">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div th:class="${match.getScoreA() > match.getScoreB()} ? 'card text-white bg-success' : 'card'">
+                                <div class="card-body">
+                                    <div class="text-center">
+                                        <div class="team-name" th:text="${match.getTeamA()}"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 text-center align-self-center">
+                            <div class="card">
+                                <div class="card-body">
+                                    <span class="vs" th:text="${match.getScoreA()} + ' - ' + ${match.getScoreB()}"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div th:class="${match.getScoreB() > match.getScoreA()} ? 'card text-white bg-success' : 'card'">
+                                <div class="card-body">
+                                    <div class="text-center">
+                                        <div class="team-name" th:text="${match.getTeamB()}"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--    Przyciski do dorobienia-->
+        <div class="row">
+            <div class="col text-center">
+                <a href="#" class="btn btn-primary">Zarządzaj</a>
+                <a href="#" class="btn btn-success">Dołącz do Ligi</a>
+            </div>
+        </div>
+    </div>
 </div>
 
 </body>
