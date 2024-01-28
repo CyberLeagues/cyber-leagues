@@ -4,12 +4,14 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import pl.cyberleagues.cyberleaguesmodule.models.Game;
 import pl.cyberleagues.cyberleaguesmodule.models.League;
 import pl.cyberleagues.cyberleaguesmodule.models.User;
 import pl.cyberleagues.cyberleaguesmodule.services.LeagueService;
 import pl.cyberleagues.cyberleaguesmodule.services.UserService;
 
 import java.security.Principal;
+
 
 @Controller
 @RequiredArgsConstructor
@@ -36,6 +38,14 @@ public class LeagueController {
         model.addAttribute("league", leagueService.getLeagueByID(leagueID));
         return "leagueTemplates/league";
     }
+
+    @GetMapping("/game")
+    public String getFilteredLeaguesByGame(Model model, @RequestParam(value = "name") Game game)
+    {
+        model.addAttribute("leagues", leagueService.getFilteredLeagueByGame(game));
+        return "leagueTemplates/leagues";
+    }
+
 
     @GetMapping("/create")
     public String creteFrom(Model model, Principal principal){
