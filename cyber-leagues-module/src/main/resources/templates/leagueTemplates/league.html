@@ -23,7 +23,7 @@
     <div class = "col-md-4">
       <div th:class="${match.getScoreA() > match.getScoreB()} ? 'team-card team-win' : 'team-card'">
         <div class="team">
-          <div class="team-name" th:text="${match.getTeamA()}">KC</div>
+          <div class="team-name" th:text="${match.getTeamA().getName()}">KC</div>
         </div>
       </div>
     </div>
@@ -35,7 +35,7 @@
     <div class = "col-md-4">
       <div th:class="${match.getScoreB() > match.getScoreA()} ? 'team-card team-win' : 'team-card'">
         <div class="team">
-          <div class="team-name" th:text="${match.teamB}">MRS</div>
+          <div class="team-name" th:text="${match.teamB.name}">MRS</div>
         </div>
       </div>
     </div>
