@@ -8,6 +8,7 @@ import pl.cyberleagues.cyberleaguesmodule.models.User;
 import pl.cyberleagues.cyberleaguesmodule.repositories.TeamRepository;
 import pl.cyberleagues.cyberleaguesmodule.repositories.UserRepository;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -33,4 +34,8 @@ public class TeamService {
         teamRepository.save(team);
         userRepository.save(user);
     }
+    public List<Team> getAll(){
+        return teamRepository.findAll();
+    }
+
 }
