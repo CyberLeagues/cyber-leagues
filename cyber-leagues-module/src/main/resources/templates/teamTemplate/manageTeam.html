@@ -1,10 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
+<html lang="pl" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head th:replace="~{head::head}"></head>
 <body>
-$END$
+<nav th:replace="~{navbar::navibar}"></nav>
+
+<div th:if="${user.team.owner.providerId} == ${user.providerId} ">
+    <div>
+        <form action="#" th:action="@{/invitation/create}" th:object="${invitation}" method="post">
+        <div class="form-group">
+            <label>Zawodnicy:</label>
+            <select th:field="*{user}" class="form-control" id="zawodnik" required>
+                <option th:each="userToInvite : ${users}"
+                        th:value="${userToInvite}" th:text="${userToInvite.name}"></option>
+            </select>
+        </div>
+
+            <button type="submit" class="btn btn-primary">Zaproś</button>
+        </form>
+    </div>
+
+    <div>
+        <p th:each="player : ${user.team.players}" th:text="${player.name}" ></p>
+    </div>
+
+</div>
+
+
 </body>
 </html>

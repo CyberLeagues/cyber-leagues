@@ -45,7 +45,9 @@
     </table>
     <p th:if="${user} != null">
       <span th:if="${team.owner.providerId} == ${user.providerId}">
-        <button>Zarządzaj</button>
+        <a th:href="@{/team/manage}" class="btn btn-primary">
+                        Zarządzaj
+                    </a>
       </span>
     </p>
   </div>
