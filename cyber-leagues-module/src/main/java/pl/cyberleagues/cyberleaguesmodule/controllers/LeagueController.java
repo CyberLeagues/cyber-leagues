@@ -64,7 +64,19 @@ public class LeagueController {
         return "leagueTemplates/manager";
     }
 
+    @GetMapping("/matches")
+    public String getUserOwnedLeague(Model model, Principal principal, @RequestParam(value = "leagueId") Long leagueId)
+    {
+        User user = userService.getUserByProviderId(principal.getName());
+        League league = leagueService.getLeagueByID(leagueId);
 
+        if (!user.getOwnedLeagues().contains(league)) {
+            return "index";
+        }
+
+        model.addAttribute("league", league);
+        return "matchTemplates/manager";
+    }
 
 
 

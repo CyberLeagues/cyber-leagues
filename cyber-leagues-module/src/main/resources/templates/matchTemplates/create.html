@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head th:replace="~{head::head}"></head>
+<body>
+<nav th:replace="~{navbar::navibar}"></nav>
+
+<div class="container mt-5">
+    <form action="#" th:action="@{/match/create}" th:object="${match}" method="post">
+        <div class="form-group">
+            <label for="start">Start:</label>
+            <input th:field="*{starts}" type="datetime-local" class="form-control" id="start" required>
+        </div>
+
+        <div class="form-group">
+            <label for="teama">Drużyna A:</label>
+            <select th:field="*{teamA}" class="form-control" id="teama" required>
+                <option th:each="team : ${teams}"
+                        th:value="${team}" th:text="${team}"></option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="teamb">Drużyna B:</label>
+            <select th:field="*{teamB}" class="form-control" id="teamb" required>
+                <option th:each="team : ${teams}"
+                        th:value="${team}" th:text="${team}"></option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+</body>
+</html>
