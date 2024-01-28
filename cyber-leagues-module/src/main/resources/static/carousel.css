@@ -1,0 +1,49 @@
+.carousel-inner {
+    height: 0;
+    padding-bottom: 25%; /* this sets carousel aspect ratio (4:1 here) */
+}
+
+.carousel-item {
+    position: absolute !important; /* Bootstrap is insistent */
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.carousel-item img{
+    height: 100%; /* Bootstrap handles width already */
+    object-fit: fill;
+}
+.carousel .carousel-item {
+    max-height:800px;
+}
+
+.carousel .carousel-inner{
+    height:800px
+}
+.carousel-inner .carousel-item img{
+    min-height:200px;
+    object-fit:cover;
+}
+
+@media(max-width:768px){
+    .carousel .carousel-inner{
+    height:auto;
+    }
+}
+.text-block{
+    height: 100%;
+
+}
+.fill {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden
+}
+.fill img {
+    flex-shrink: 0;
+    min-width: 100%;
+    min-height: 100%
+}
