@@ -26,15 +26,12 @@ public class TeamController {
     @GetMapping("/{id}")
     public String getTeamById(Model model, Principal principal, @PathVariable Long id) {
         Team team = teamService.getTeamById(id);
-        User user ;
-        if (principal != null) {
-            user = userService.getUserByProviderId(principal.getName());
+        if (principal==null){
+            return "/userTemplates/login";
         }
-        else{
-            user = null;
-        }
-            model.addAttribute("team", team);
-            model.addAttribute("user", user);
+        User user = userService.getUserByProviderId(principal.getName());
+        model.addAttribute("team", team);
+        model.addAttribute("user", user);
         return "/teamTemplate/team";
     }
 
@@ -55,8 +52,31 @@ public class TeamController {
         return "teamTemplate/manager";
     }
 
+    @PostMapping("/delete")
+    public String creteSubmit(@ModelAttribute("user") User notCompleateUser, Model model, Principal principal){
+        User user = userService.getUserByProviderId(notCompleateUser.getProviderId());
+        teamService.deletePlayer(user);
+
+        if (principal==null){
+            return "/userTemplates/login";
+        }
+
+        user = userService.getUserByProviderId(principal.getName());
+        List <User> users = userService.getAllUsers();
+
+        model.addAttribute("user",user);
+        model.addAttribute("invitation",new Invitation());
+        model.addAttribute("users",users);
+
+        return "teamTemplate/manageTeam";
+    }
+
+
     @GetMapping("/manage")
     public String manageTeam(Model model, Principal principal){
+        if (principal==null){
+            return "/userTemplates/login";
+        }
         User user = userService.getUserByProviderId(principal.getName());
         List <User> users = userService.getAllUsers();
 

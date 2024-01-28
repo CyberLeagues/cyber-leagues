@@ -42,6 +42,9 @@ public class UserController {
 
     @GetMapping("/team")
     public String getOwnedTeam(Principal principal, Model model) {
+        if (principal==null){
+            return "/userTemplates/login";
+        }
         User user = userService.getUserByProviderId(principal.getName());
         model.addAttribute("team", user.getTeam());
 
