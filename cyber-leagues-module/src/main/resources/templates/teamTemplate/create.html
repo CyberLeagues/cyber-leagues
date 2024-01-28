@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head th:replace="~{head::head}"></head>
+<body>
+<nav th:replace="~{navbar::navibar}"></nav>
+
+<div class="container mt-5">
+    <form action="#" th:action="@{/team/create}" th:object="${team}" method="post">
+        <div class="form-group">
+            <label for="nazwa">Nazwa:</label>
+            <input th:field="*{name}" type="text" class="form-control" id="nazwa" placeholder="Enter nazwa" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Stwórz</button>
+    </form>
+</div>
+
+</body>
+</html>
