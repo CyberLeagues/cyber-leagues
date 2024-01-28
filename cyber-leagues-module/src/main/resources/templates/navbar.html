@@ -48,9 +48,9 @@
             </div>
 
             <div class="d-flex" sec:authorize="isAuthenticated()">
-                <a class="nav-link active" th:href="@{/logout}">
-                    <button type="button" class="btn btn-outline-danger">Wyloguj</button>
-                </a>
+                <form  th:action="@{/logout}" method="POST">
+                    <button  type="submit" class="btn btn-outline-danger">Wyloguj</button>
+                </form>
             </div>
         </div>
     </div>

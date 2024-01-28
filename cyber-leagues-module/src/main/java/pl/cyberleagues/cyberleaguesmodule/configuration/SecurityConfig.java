@@ -7,6 +7,7 @@ import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import pl.cyberleagues.cyberleaguesmodule.services.OAuth2UserService;
 
 @Configuration
@@ -24,10 +25,13 @@ public class SecurityConfig {
                     authorize.anyRequest().authenticated();
                 })
                 .oauth2Login(oauth2 -> oauth2
-                        .userInfoEndpoint(userInfo -> userInfo.oidcUserService(service)))
+                        .loginPage("/login")
+                        .userInfoEndpoint(userInfo -> userInfo.oidcUserService(service))
+                      .defaultSuccessUrl("/"))
                 .oidcLogout();
 
         http.logout(logout -> logout
+                .logoutUrl("/logout")
                 .logoutSuccessUrl("/")
                 .clearAuthentication(true)
                 .invalidateHttpSession(true)
