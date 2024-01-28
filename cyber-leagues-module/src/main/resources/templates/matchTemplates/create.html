@@ -15,7 +15,7 @@
             <label for="teama">Drużyna A:</label>
             <select th:field="*{teamA}" class="form-control" id="teama" required>
                 <option th:each="team : ${teams}"
-                        th:value="${team}" th:text="${team}"></option>
+                        th:value="${team.name}" th:text="${team.name}"></option>
             </select>
         </div>
 
@@ -23,7 +23,7 @@
             <label for="teamb">Drużyna B:</label>
             <select th:field="*{teamB}" class="form-control" id="teamb" required>
                 <option th:each="team : ${teams}"
-                        th:value="${team}" th:text="${team}"></option>
+                        th:value="${team.name}" th:text="${team.name}"></option>
             </select>
         </div>
 
