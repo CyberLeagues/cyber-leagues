@@ -3,6 +3,7 @@ package pl.cyberleagues.cyberleaguesmodule.controllers;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +21,11 @@ import java.util.List;
 public class InvitationController {
     private final InvitationService invitationService;
     private final UserService userService;
+
+    @GetMapping("/invteam")
+    public String getInvitation(){
+        return "/teamTemplate/invitation";
+    }
 
     @PostMapping("/create")
     public String createInvitation(@ModelAttribute("invitation") Invitation invitation, Model model, Principal principal) {
