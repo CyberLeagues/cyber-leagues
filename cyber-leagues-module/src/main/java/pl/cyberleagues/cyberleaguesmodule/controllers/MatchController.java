@@ -50,4 +50,28 @@ public class MatchController {
 
         return "matchTemplates/manager";
     }
+
+    @GetMapping("/edit")
+    public String editMatch(Model model, @RequestParam(value = "matchId") Long matchId, @RequestParam(value = "leagueId") Long leagueId){
+        Match match = matchService.getMatchById(matchId);
+        model.addAttribute("match", match);
+
+        League league = leagueService.getLeagueByID(leagueId);
+        model.addAttribute("league", league);
+
+        return "matchTemplates/edit";
+    }
+
+    @PostMapping("/edit")
+    public String editMatchSubmit(Model model, @ModelAttribute("match") Match match, @RequestParam(value = "leagueId") Long leagueId){
+
+        Match matchById = matchService.getMatchById(match.getId());
+        Match savedMatch = matchService.save(matchById, match);
+
+        League league = leagueService.getLeagueByID(leagueId);
+
+        model.addAttribute("league", league);
+
+        return "matchTemplates/manager";
+    }
 }

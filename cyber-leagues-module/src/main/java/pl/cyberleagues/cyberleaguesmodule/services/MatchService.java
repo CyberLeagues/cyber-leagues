@@ -28,6 +28,10 @@ public class MatchService {
         return matchRepository.findAllByLeagueId(leagueID);
     }
 
+    public Match getMatchById(Long id){
+        Optional<Match> byId = matchRepository.findById(id);
+        return byId.orElseThrow();
+    }
 
     public void createMatch(Match match, League league, MatchFormDto matchFormDto) {
         Optional<Team> TeamA = teamRepository.findById(matchFormDto.getTeamAId());
@@ -39,11 +43,21 @@ public class MatchService {
         match.setScoreA(0);
         match.setScoreB(0);
 
+//todo: do wyświetlania histori gier
 //        TeamA.get().getMatches().add(match);
 //        TeamB.get().getMatches().add(match);
 
         league.getMatches().add(match);
+
         matchRepository.save(match);
         leagueRepository.save(league);
+//        teamRepository.save(TeamA.get());
+//        teamRepository.save(TeamB.get());
+    }
+
+    public Match save(Match match, Match newScores) {
+        match.setScoreA(newScores.getScoreA());
+        match.setScoreB(newScores.getScoreB());
+        return matchRepository.save(match);
     }
 }
