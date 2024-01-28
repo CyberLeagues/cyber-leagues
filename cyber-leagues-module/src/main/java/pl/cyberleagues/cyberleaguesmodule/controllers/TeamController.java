@@ -4,10 +4,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import pl.cyberleagues.cyberleaguesmodule.models.League;
 import pl.cyberleagues.cyberleaguesmodule.models.Team;
 import pl.cyberleagues.cyberleaguesmodule.models.User;
 import pl.cyberleagues.cyberleaguesmodule.services.TeamService;
@@ -37,6 +35,23 @@ public class TeamController {
             model.addAttribute("team", team);
             model.addAttribute("user", user);
         return "/teamTemplate/team";
+    }
+
+    @GetMapping("/create")
+    public String creteFrom(Model model){
+        model.addAttribute("team", new Team());
+        return "teamTemplate/create";
+    }
+
+    @PostMapping("/create")
+    public String creteSubmit(@ModelAttribute("team") Team team, Model model, Principal principal){
+        User user = userService.getUserByProviderId(principal.getName());
+        teamService.createTeam(team, user);
+
+        model.addAttribute("ownedLeagues", user.getOwnedLeagues());
+        model.addAttribute("team", team);
+
+        return "teamTemplate/manager";
     }
 
 
