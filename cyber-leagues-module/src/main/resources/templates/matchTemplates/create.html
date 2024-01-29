@@ -14,7 +14,7 @@
         <div class="form-group">
             <label for="teama">Drużyna A:</label>
             <select th:field="${matchDto.teamAId}" class="form-control" id="teama" required>
-                <option th:each="team : ${teams}"
+                <option th:each="team : ${league.teams}"
                         th:value="${team.id}" th:text="${team.name}"></option>
             </select>
         </div>
@@ -22,7 +22,7 @@
         <div class="form-group">
             <label for="teamb">Drużyna B:</label>
             <select th:field="${matchDto.teamBId}" class="form-control" id="teamb" required>
-                <option th:each="team : ${teams}"
+                <option th:each="team : ${league.teams}"
                         th:value="${team.id}" th:text="${team.name}"></option>
             </select>
         </div>
