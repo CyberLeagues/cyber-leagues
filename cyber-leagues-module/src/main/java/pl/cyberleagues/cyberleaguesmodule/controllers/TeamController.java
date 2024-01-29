@@ -53,8 +53,8 @@ public class TeamController {
     }
 
     @PostMapping("/delete")
-    public String creteSubmit(@ModelAttribute("user") User notCompleateUser, Model model, Principal principal){
-        User user = userService.getUserByProviderId(notCompleateUser.getProviderId());
+    public String creteSubmit(@ModelAttribute("user") User incompleateUser, Model model, Principal principal){
+        User user = userService.getUserByProviderId(incompleateUser.getProviderId());
         teamService.deletePlayer(user);
 
         if (principal==null){
