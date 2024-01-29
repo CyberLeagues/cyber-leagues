@@ -5,10 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import pl.cyberleagues.cyberleaguesmodule.models.Invitation;
-import pl.cyberleagues.cyberleaguesmodule.models.League;
-import pl.cyberleagues.cyberleaguesmodule.models.Team;
-import pl.cyberleagues.cyberleaguesmodule.models.User;
+import pl.cyberleagues.cyberleaguesmodule.models.*;
 import pl.cyberleagues.cyberleaguesmodule.services.TeamService;
 import pl.cyberleagues.cyberleaguesmodule.services.UserService;
 
@@ -49,7 +46,8 @@ public class TeamController {
 
         model.addAttribute("ownedLeagues", user.getOwnedLeagues());
         model.addAttribute("team", team);
-
+        model.addAttribute("registration" , new Registration());
+        model.addAttribute("principal", principal);
         return "teamTemplate/manager";
     }
 
