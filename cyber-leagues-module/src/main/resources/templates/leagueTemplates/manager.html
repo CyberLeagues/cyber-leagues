@@ -11,6 +11,11 @@
         </a>
     </div>
 
+
+    <div th:if="${#lists.isEmpty(ownedLeagues)}" class="alert alert-info" role="alert">
+        Nie jesteś obecnie organizatorem żadnej ligi.
+    </div>
+
     <div class="card mb-3" th:each="league : ${ownedLeagues}">
         <div class="row g-0">
             <div class="col-md-4">

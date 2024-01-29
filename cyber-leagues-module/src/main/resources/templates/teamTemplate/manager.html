@@ -17,7 +17,10 @@
 <nav th:replace="~{navbar::navibar}"></nav>
 
 <div class="container mt-5">
-    <div class="d-flex" sec:authorize="isAuthenticated()" th:if="${team == null}">
+    <div class="d-flex flex-column align-items-center" sec:authorize="isAuthenticated()" th:if="${team == null}">
+        <div class="alert alert-info mb-3" role="alert">
+            Aktualnie nie posiadasz żadnej drużyny. Dołącz do społeczności CyberLeague i załóż swoją drużynę już teraz!
+        </div>
         <a class="nav-link active" th:href="@{/team/create}">
             <button type="button" class="btn btn-outline-success">Stwórz Drużynę</button>
         </a>
