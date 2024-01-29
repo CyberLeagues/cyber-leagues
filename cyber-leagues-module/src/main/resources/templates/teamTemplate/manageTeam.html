@@ -13,7 +13,7 @@
         <div class="form-group">
             <label>Zawodnicy:</label>
             <select th:field="*{user.providerId}" class="form-control" id="zawodnik" required>
-                <option th:if="${userToInvite.providerId}!=${user.providerId}" th:each="userToInvite : ${users}"
+                <option th:if="${!user.team.players.contains(userToInvite)}" th:each="userToInvite : ${users}"
                         th:value="${userToInvite.providerId}" th:text="${userToInvite.name}"></option>
             </select>
         </div>

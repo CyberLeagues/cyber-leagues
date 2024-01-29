@@ -47,6 +47,7 @@ public class UserController {
         }
         User user = userService.getUserByProviderId(principal.getName());
         model.addAttribute("team", user.getTeam());
+        model.addAttribute("user",user);
 
         return "teamTemplate/manager";
     }

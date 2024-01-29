@@ -23,7 +23,16 @@ public class InvitationController {
     private final UserService userService;
 
     @GetMapping("/invteam")
-    public String getInvitation(){
+    public String getInvitation(Model model, Principal principal) {
+        if (principal == null) {
+            return "/userTemplates/login";
+        }
+
+        User user = userService.getUserByProviderId(principal.getName());
+        List<Invitation> invitations = invitationService.getAllInvitations(user);
+
+        model.addAttribute("invitations", invitations);
+        model.addAttribute("invitation", new Invitation());
         return "/teamTemplate/invitation";
     }
 
@@ -41,5 +50,41 @@ public class InvitationController {
 
         return "teamTemplate/manageTeam";
     }
+
+    @PostMapping("/accept")
+    public String acceptInvitation(@ModelAttribute("invitation") Invitation incompleteInvitation, Model model, Principal principal) {
+        Invitation invitation = invitationService.getInvitationById(incompleteInvitation.getId());
+        invitationService.acceptInvitation(invitation);
+
+        if (principal == null) {
+            return "/userTemplates/login";
+        }
+
+        User user = userService.getUserByProviderId(principal.getName());
+        List<Invitation> invitations = invitationService.getAllInvitations(user);
+
+        model.addAttribute("invitations", invitations);
+        model.addAttribute("invitation", new Invitation());
+        return "/teamTemplate/invitation";
+    }
+
+    @PostMapping("/decline")
+    public String declineInvitation(@ModelAttribute("invitation") Invitation incompleteInvitation, Model model, Principal principal) {
+        Invitation invitation = invitationService.getInvitationById(incompleteInvitation.getId());
+        invitationService.declineInvitation(invitation);
+
+        if (principal == null) {
+            return "/userTemplates/login";
+        }
+
+        User user = userService.getUserByProviderId(principal.getName());
+        List<Invitation> invitations = invitationService.getAllInvitations(user);
+
+        model.addAttribute("invitations", invitations);
+        model.addAttribute("invitation", new Invitation());
+        return "/teamTemplate/invitation";
+    }
+
+
 }
 
