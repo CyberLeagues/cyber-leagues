@@ -1,11 +1,26 @@
 <!DOCTYPE html>
 <html lang="pl" xmlns:sec="http://www.w3.org/1999/xhtml">
-<head th:replace="~{head::head}"></head>
+<head th:replace="~{head::head}">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        main {
+            flex: 1;
+        }
+    </style>
+</head>
 <body>
 <nav th:replace="~{navbar::navibar}"></nav>
 
 <div class="container mt-5">
-    <div class="d-flex" sec:authorize="isAuthenticated()" th:if="${team == null}">
+    <div class="d-flex flex-column align-items-center" sec:authorize="isAuthenticated()" th:if="${team == null}">
+        <div class="alert alert-info mb-3" role="alert">
+            Aktualnie nie posiadasz żadnej drużyny. Dołącz do społeczności CyberLeague i załóż swoją drużynę już teraz!
+        </div>
         <a class="nav-link active" th:href="@{/team/create}">
             <button type="button" class="btn btn-outline-success">Stwórz Drużynę</button>
         </a>
@@ -81,6 +96,6 @@
         </div>
     </div>
 </div>
-
+<div th:replace="~{footer::footer}"></div>
 </body>
 </html>

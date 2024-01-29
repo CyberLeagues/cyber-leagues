@@ -1,12 +1,17 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head th:replace="~{head::head}"></head>
+<head th:replace="~{head::head}">
+</head>
 <body>
 <nav th:replace="~{navbar::navibar}"></nav>
 
-<!--podany endpoint localhost:.../league?ligaID=...-->
 <div class="container mt-5">
-    <div class="card mb-3" th:each="league : ${leagues}">
+    <div th:if="${#lists.isEmpty(leagues)}" class="no-leagues-message d-flex justify-content-center align-items-center vh-100">
+        <div class="text-center">
+            <h1 class="display-3">Brak aktualnie lig</h1>
+        </div>
+    </div>
+    <div class="card mb-3" th:each="league : ${leagues}" th:unless="${#lists.isEmpty(leagues)}">
         <div class="row g-0">
             <div class="col-md-4">
                 <img th:src="@{/images/__${league.game}__.png}" class="img-fluid rounded-start" alt="league">
@@ -25,6 +30,6 @@
         </div>
     </div>
 </div>
-
+<div th:replace="~{footer::footer}"></div>
 </body>
 </html>

@@ -8,7 +8,7 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
                 <li class="nav-item" th:each="gameType : ${T(pl.cyberleagues.cyberleaguesmodule.models.Game).values()}">
-                    <a class="nav-link active" th:href="@{/league/game(name=${gameType.name})}" th:text="${gameType.name()}"></a>
+                    <a class="nav-link active" th:href="@{/league/game(name=${gameType.name})}" th:text="${gameType.name().replace('_',' ')}"></a>
                 </li>
 
             </ul>

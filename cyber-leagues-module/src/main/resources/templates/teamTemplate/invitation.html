@@ -44,6 +44,18 @@
             border-radius: 5px;
             margin-bottom: 10px;
         }
+        .btn-group > .btn + .btn {
+            margin-left: 5px;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        main {
+            flex: 1;
+        }
     </style>
 </head>
 <body>
@@ -59,46 +71,37 @@
                     <div class="invitation">
                         <h4 class="text-center mb-3">Zaproszenie od drużyny:</h4>
                         <div class="text-center">
-                            <!-- Przyciski z ikonami -->
-                            <button class="btn btn-success mr-2"><i class="fas fa-check"></i></button>
-                            <button class="btn btn-danger"><i class="fas fa-times"></i></button>
                         </div>
                     </div>
-                    <!-- Drugie zaproszenie -->
-
-
+                    <div th:if="${#lists.isEmpty(invitations)}">
+                        <h3 class="text-center">Brak zaproszeń</h3>
+                    </div>
                     <div th:each="inv :${invitations}" class="invitation">
                         <h4 th:text="${inv.team.name}" class="text-center mb-3"></h4>
                         <div class="text-center">
-                            <!-- Przyciski z ikonami -->
 
-                            <form action=# th:action="@{/invitation/accept}" th:object="${invitation}" method="post">
-                                <select style="display: none" th:field="*{id}">
-                                    <option th:value="${inv.id}"></option>
-                                </select>
-                                    <button class="btn btn-success mr-2" type="submit"><i class="fas fa-check"></i></button>
-                            </form>
+                            <div class="btn-group btn-group-gap" role="group" aria-label="Przyciski akcji">
+                                <form action=# th:action="@{/invitation/accept}" th:object="${invitation}" method="post">
+                                    <select style="display: none" th:field="*{id}">
+                                        <option th:value="${inv.id}"></option>
+                                    </select>
+                                    <button class="btn btn-success" type="submit"><i class="fas fa-check"></i></button>
+                                </form>
 
-                            <form action=# th:action="@{/invitation/decline}" th:object="${invitation}" method="post">
-                                <select style="display: none" th:field="*{id}">
-                                    <option th:value="${inv.id}"></option>
-                                </select>
-                                <button class="btn btn-danger" type="submit"><i class="fas fa-times"></i></button>
-                            </form>
+                                <form action=# th:action="@{/invitation/decline}" th:object="${invitation}" method="post">
+                                    <select style="display: none" th:field="*{id}">
+                                        <option th:value="${inv.id}"></option>
+                                    </select>
+                                    <button class="btn btn-danger ml-1" type="submit"><i class="fas fa-times"></i></button>
+                                </form>
+                            </div>
                         </div>
                     </div>
-
-
-                    <!-- Dodaj więcej zaproszeń tutaj -->
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-
-<footer th:replace="~{footer::footer}"></footer>
+<div th:replace="~{footer::footer}"></div>
 </body>
-
 </html>
-
