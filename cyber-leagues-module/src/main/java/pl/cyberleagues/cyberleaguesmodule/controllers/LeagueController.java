@@ -60,7 +60,7 @@ public class LeagueController {
         model.addAttribute("ownedLeagues", user.getOwnedLeagues());
         model.addAttribute("principal", principal);
         model.addAttribute("league", league);
-
+        model.addAttribute("registration" , new Registration());
         return "leagueTemplates/manager";
     }
 
