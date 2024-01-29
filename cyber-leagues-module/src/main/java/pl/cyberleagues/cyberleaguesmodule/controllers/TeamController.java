@@ -44,6 +44,7 @@ public class TeamController {
         User user = userService.getUserByProviderId(principal.getName());
         teamService.createTeam(team, user);
 
+        model.addAttribute("user", user);
         model.addAttribute("ownedLeagues", user.getOwnedLeagues());
         model.addAttribute("team", team);
         model.addAttribute("registration" , new Registration());
