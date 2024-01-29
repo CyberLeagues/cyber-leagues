@@ -51,6 +51,6 @@ public class UserController {
         model.addAttribute("team", user.getTeam());
         model.addAttribute("user",user);
 
-        return "teamTemplate/team";
+        return "teamTemplate/manager";
     }
 }
