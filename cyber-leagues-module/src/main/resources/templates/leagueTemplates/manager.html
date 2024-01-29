@@ -23,9 +23,15 @@
                     <span>Rozpoczyna się o:</span>
                     <p class="card-text" th:text="${league.starts}"><small class="text-body-secondary"></small></p>
 <!--                    zmienić link-->
-                    <a th:href="@{/league/matches(leagueId=${league.id})}" class="btn btn-primary stretched-link">
+                    <a th:href="@{/league/matches(leagueId=${league.id})}" class="btn btn-primary ">
                         Dowiedź się więcej
                     </a>
+                    <form action=# th:action="@{/registration/registrationManager}" th:object="${registration}" method="post">
+                        <select style="display: none" th:field="*{league.id}">
+                            <option th:value="${league.id}"></option>
+                        </select>
+                        <button type="submit" class="btn btn-primary">Zgłoszenia</button>
+                    </form>
                 </div>
             </div>
         </div>

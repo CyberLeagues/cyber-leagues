@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pl.cyberleagues.cyberleaguesmodule.models.League;
+import pl.cyberleagues.cyberleaguesmodule.models.Registration;
 import pl.cyberleagues.cyberleaguesmodule.models.User;
 import pl.cyberleagues.cyberleaguesmodule.services.UserService;
 
@@ -36,6 +37,7 @@ public class UserController {
     public String getOwnedLeagues(Principal principal, Model model) {
         User user = userService.getUserByProviderId(principal.getName());
         model.addAttribute("ownedLeagues", user.getOwnedLeagues());
+        model.addAttribute("registration", new Registration());
 
         return "leagueTemplates/manager";
     }
@@ -49,6 +51,6 @@ public class UserController {
         model.addAttribute("team", user.getTeam());
         model.addAttribute("user",user);
 
-        return "teamTemplate/manager";
+        return "teamTemplate/team";
     }
 }

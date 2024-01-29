@@ -26,4 +26,8 @@ public class Team {
 
     @OneToMany
     private List<Match> matches;
+
+    @ManyToOne
+    @JoinColumn(name = "league_id")
+    private League league;
 }

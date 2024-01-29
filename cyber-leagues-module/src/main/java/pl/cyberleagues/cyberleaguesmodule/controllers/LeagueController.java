@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pl.cyberleagues.cyberleaguesmodule.models.Game;
 import pl.cyberleagues.cyberleaguesmodule.models.League;
+import pl.cyberleagues.cyberleaguesmodule.models.Registration;
 import pl.cyberleagues.cyberleaguesmodule.models.User;
 import pl.cyberleagues.cyberleaguesmodule.services.LeagueService;
 import pl.cyberleagues.cyberleaguesmodule.services.UserService;
@@ -25,37 +26,34 @@ public class LeagueController {
 
 
     @GetMapping("/all")
-    public String getLeaguesByGame(Model model)
-    {
+    public String getLeaguesByGame(Model model) {
         model.addAttribute("leagues", leagueService.getAllAvailableLeagues());
         return "leagueTemplates/leagues";
     }
 
 
     @GetMapping
-    public String getLeagueByID(Model model, @RequestParam(value = "leagueId") Long leagueID)
-    {
+    public String getLeagueByID(Model model, @RequestParam(value = "leagueId") Long leagueID) {
         model.addAttribute("league", leagueService.getLeagueByID(leagueID));
         return "leagueTemplates/league";
     }
 
     @GetMapping("/game")
-    public String getFilteredLeaguesByGame(Model model, @RequestParam(value = "name") Game game)
-    {
+    public String getFilteredLeaguesByGame(Model model, @RequestParam(value = "name") Game game) {
         model.addAttribute("leagues", leagueService.getFilteredLeagueByGame(game));
         return "leagueTemplates/leagues";
     }
 
 
     @GetMapping("/create")
-    public String creteFrom(Model model, Principal principal){
+    public String creteFrom(Model model, Principal principal) {
         model.addAttribute("principal", principal);
         model.addAttribute("league", new League());
         return "leagueTemplates/create";
     }
 
     @PostMapping("/create")
-    public String creteSubmit(@ModelAttribute("league") League league, Model model, Principal principal){
+    public String creteSubmit(@ModelAttribute("league") League league, Model model, Principal principal) {
         User user = userService.getUserByProviderId(principal.getName());
         leagueService.createLeague(league, user);
 
@@ -67,8 +65,7 @@ public class LeagueController {
     }
 
     @GetMapping("/matches")
-    public String getUserOwnedLeague(Model model, Principal principal, @RequestParam(value = "leagueId") Long leagueId)
-    {
+    public String getUserOwnedLeague(Model model, Principal principal, @RequestParam(value = "leagueId") Long leagueId) {
         User user = userService.getUserByProviderId(principal.getName());
         League league = leagueService.getLeagueByID(leagueId);
 
@@ -80,13 +77,17 @@ public class LeagueController {
         return "matchTemplates/manager";
     }
 
-
-
-
-
-
-
-
+    @GetMapping("/registration")
+    public String getLeaguesAvailableForRegistration(Model model, Principal principal) {
+        if (principal == null) {
+            return "userTemplates/login";
+        }
+        User user = userService.getUserByProviderId(principal.getName());
+        model.addAttribute("leagues", leagueService.getAvailableLeagues());
+        model.addAttribute("user", user);
+        model.addAttribute("registration", new Registration());
+        return "leagueTemplates/leaguesRegistration";
+    }
 
 
 }

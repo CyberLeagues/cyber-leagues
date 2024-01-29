@@ -8,6 +8,7 @@ import pl.cyberleagues.cyberleaguesmodule.models.User;
 import pl.cyberleagues.cyberleaguesmodule.repositories.LeagueRepository;
 import pl.cyberleagues.cyberleaguesmodule.repositories.UserRepository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -42,5 +43,10 @@ public class LeagueService {
         user.getOwnedLeagues().add(league);
         leagueRepository.save(league);
         userRepository.save(user);
+    }
+
+
+    public List<League> getAvailableLeagues() {
+       return leagueRepository.findByStartsAfter(LocalDateTime.now());
     }
 }
