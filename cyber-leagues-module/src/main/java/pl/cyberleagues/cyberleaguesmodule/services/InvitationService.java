@@ -52,6 +52,7 @@ public class InvitationService {
             if (user.getId() == previousTeam.getOwner().getId()) {
                 for (User player : previousTeam.getPlayers()) {
                     player.setTeam(null);
+                    userRepository.save(player);
                 }
                 teamRepository.delete(previousTeam);
             } else {
