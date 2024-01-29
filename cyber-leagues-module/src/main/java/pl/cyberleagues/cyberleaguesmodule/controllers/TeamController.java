@@ -36,7 +36,8 @@ public class TeamController {
     }
 
     @GetMapping("/create")
-    public String creteFrom(Model model){
+    public String creteFrom(Model model, Principal principal){
+        model.addAttribute("principal", principal);
         model.addAttribute("team", new Team());
         return "teamTemplate/create";
     }
