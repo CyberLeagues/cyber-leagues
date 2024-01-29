@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pl" xmlns:sec="http://www.w3.org/1999/xhtml">
-<head th:replace="~{head::head}"></head>
+<head th:replace="~{head::head}">
+</head>
 <body>
 <nav th:replace="~{navbar::navibar}"></nav>
 
@@ -8,7 +9,7 @@
     <form action="#" th:action="@{/league/create}" th:object="${league}" method="post">
         <div class="form-group">
             <label for="nazwa">Nazwa:</label>
-            <input th:field="*{name}" type="text" class="form-control" id="nazwa" placeholder="Enter nazwa" required>
+            <input th:field="*{name}" type="text" class="form-control" id="nazwa" placeholder="Wprowadź nazwę" required>
         </div>
 
         <div class="form-group">
@@ -18,7 +19,7 @@
 
         <div class="form-group">
             <label for="maksymalnaLiczbaGraczy">Maksymalna Liczba Drużyn:</label>
-            <input th:field="*{maxNumberOfTeams}" type="number" class="form-control" id="maksymalnaLiczbaGraczy" placeholder="Enter liczba graczy" required>
+            <input th:field="*{maxNumberOfTeams}" type="number" class="form-control" id="maksymalnaLiczbaGraczy" placeholder="Wprowadź liczbę drużyn" required>
         </div>
 
         <div class="form-group">
@@ -31,12 +32,13 @@
 
         <div class="form-group">
             <label for="opis">Opis:</label>
-            <textarea th:field="*{description}" class="form-control" id="opis" rows="3" placeholder="Enter opis" required></textarea>
+            <textarea th:field="*{description}" class="form-control" id="opis" rows="3" placeholder="Wprowadź opis ligi" required></textarea>
         </div>
 
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">Stwórz Ligę</button>
     </form>
 </div>
 
+<div th:replace="~{footer::footer}"></div>
 </body>
 </html>

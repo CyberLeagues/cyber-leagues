@@ -8,12 +8,13 @@
     <form action="#" th:action="@{/team/create}" th:object="${team}" method="post">
         <div class="form-group">
             <label for="nazwa">Nazwa:</label>
-            <input th:field="*{name}" type="text" class="form-control" id="nazwa" placeholder="Enter nazwa" required>
+            <input th:field="*{name}" type="text" class="form-control" id="nazwa" placeholder="Wprowadź nazwę" required>
         </div>
 
         <button type="submit" class="btn btn-primary">Stwórz</button>
     </form>
 </div>
 
+<div th:replace="~{footer::footer}"></div>
 </body>
 </html>
