@@ -24,21 +24,21 @@ public class InvitationService {
     public void addInvitation(Invitation incompleteInvitaion) {
         User user = userService.getUserByProviderId(incompleteInvitaion.getUser().getProviderId());
         Team team = teamService.getTeamById(incompleteInvitaion.getTeam().getId());
-        Invitation invitation= new Invitation();
+        Invitation invitation = new Invitation();
 
         invitation.setTeam(team);
         invitation.setUser(user);
-        Invitation invitationCheck = invitationRepository.findFirstByUserEqualsAndTeamEquals(user,team);
-        if (invitationCheck==null){
+        Invitation invitationCheck = invitationRepository.findFirstByUserEqualsAndTeamEquals(user, team);
+        if (invitationCheck == null) {
             invitationRepository.save(invitation);
         }
     }
 
-    public List<Invitation> getAllInvitations(User user){
+    public List<Invitation> getAllInvitations(User user) {
         return invitationRepository.findByUserEquals(user);
     }
 
-    public Invitation getInvitationById(Long id){
+    public Invitation getInvitationById(Long id) {
         return invitationRepository.findById(id).get();
     }
 
@@ -46,10 +46,18 @@ public class InvitationService {
         Team team = invitation.getTeam();
         User user = invitation.getUser();
 
-        if (user.getTeam()!= null){
-            user.getTeam().getPlayers().remove(user);
+        if (user.getTeam() != null) {
+
             Team previousTeam = user.getTeam();
-            teamRepository.save(team);
+            if (user.getId() == previousTeam.getOwner().getId()) {
+                for (User player : previousTeam.getPlayers()) {
+                    player.setTeam(null);
+                }
+                teamRepository.delete(previousTeam);
+            } else {
+                user.getTeam().getPlayers().remove(user);
+                teamRepository.save(previousTeam);
+            }
         }
 
         user.setTeam(team);
