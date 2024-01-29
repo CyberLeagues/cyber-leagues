@@ -69,13 +69,14 @@
                 </div>
             </div>
         </div>
-        <!--    Przyciski do dorobienia-->
-        <div class="row">
-            <div class="col text-center">
+        <!--    Przyciski do edytowania-->
+          <span th:if="${team.owner.providerId} == ${user.providerId}">
+            <a th:href="@{/league/registration}" class="btn btn-primary">
+              Dołącz do ligi
+            </a>
+          </span>
 
-                <a href="#" class="btn btn-success">Dołącz do Ligi</a>
-            </div>
-        </div>
+
     </div>
 </div>
 

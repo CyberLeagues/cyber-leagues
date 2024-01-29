@@ -4,7 +4,7 @@ create table league (game tinyint, is_open bit not null, max_number_of_teams int
 create table maches (scorea integer, scoreb integer, id bigint not null auto_increment, league_id bigint, starts datetime(6), teama_id bigint, teamb_id bigint, primary key (id)) engine=InnoDB;
 create table registration (id bigint not null auto_increment, league_id bigint, team_id bigint, primary key (id)) engine=InnoDB;
 create table score (id bigint not null auto_increment, primary key (id)) engine=InnoDB;
-create table team (id bigint not null auto_increment, owner_id bigint, name varchar(255), primary key (id)) engine=InnoDB;
+create table team (id bigint not null auto_increment, league_id bigint, owner_id bigint, name varchar(255), primary key (id)) engine=InnoDB;
 create table team_matches (matches_id bigint not null, team_id bigint not null) engine=InnoDB;
 create table team_players (players_id bigint not null, team_id bigint not null) engine=InnoDB;
 create table users (account_non_expired bit not null, account_non_locked bit not null, credentials_non_expired bit not null, enabled bit not null, id bigint not null auto_increment, team_id bigint, name varchar(255), password varchar(255), picture varchar(255), provider varchar(255), provider_id varchar(255), username varchar(255), primary key (id)) engine=InnoDB;
@@ -23,6 +23,7 @@ alter table maches add constraint FK9r3xk5qicydlyvbdkogein41d foreign key (teama
 alter table maches add constraint FKrf9wbgjddk2fdothh3d9239ap foreign key (teamb_id) references team (id);
 alter table registration add constraint FKfx1sikx3iiirdxliw512o809k foreign key (league_id) references league (id);
 alter table registration add constraint FKnjhkf57erinxqbgl05cok5ash foreign key (team_id) references team (id);
+alter table team add constraint FK9rk8716asfr76xkn99aa3uvp foreign key (league_id) references league (id);
 alter table team add constraint FKgdpoe95qkeodr9j476t8emoxl foreign key (owner_id) references users (id);
 alter table team_matches add constraint FKj6u5g3xi2adybuhltev60lapn foreign key (matches_id) references maches (id);
 alter table team_matches add constraint FKd9dx2hnof5j3nkoh6qvo78ok8 foreign key (team_id) references team (id);

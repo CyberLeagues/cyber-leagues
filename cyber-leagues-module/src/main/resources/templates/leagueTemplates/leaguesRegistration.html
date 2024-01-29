@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head th:replace="~{head::head}"></head>
+<body>
+<nav th:replace="~{navbar::navibar}"></nav>
+
+<!--podany endpoint localhost:.../league?ligaID=...-->
+<div  class="container mt-5">
+    <div class="card mb-3" th:each="league : ${leagues}">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img th:src="@{/images/__${league.game}__.png}" class="img-fluid rounded-start" alt="league">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${league.name}"></h5>
+                    <p class="card-text" th:text="${league.description}"></p>
+                    <span>Rozpoczyna się o:</span>
+                    <p class="card-text" th:text="${league.starts}"><small class="text-body-secondary"></small></p>
+                    <a th:href="@{/league(leagueId=${league.getId()})}" class="btn btn-primary">
+                        Dowiedź się więcej
+                    </a>
+                </div>
+                <div>
+                <form action=# th:action="@{/registration/apply}" th:object="${registration}" method="post">
+                    <select style="display: none" th:field="*{team.id}">
+                        <option th:value="${user.team.id}"></option>
+                    </select>
+                    <select style="display: none" th:field="*{league.id}">
+                        <option th:value="${league.id}"></option>
+                    </select>
+                    <button type="submit" class="btn btn-primary">Aplikuj</button>
+
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

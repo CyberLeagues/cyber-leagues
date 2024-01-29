@@ -43,8 +43,8 @@ public class InvitationService {
     }
 
     public void acceptInvitation(Invitation invitation) {
-        Team team = teamService.getTeamById(invitation.getTeam().getId());
-        User user = userService.getUserByProviderId(invitation.getUser().getProviderId());
+        Team team = invitation.getTeam();
+        User user = invitation.getUser();
 
         if (user.getTeam()!= null){
             user.getTeam().getPlayers().remove(user);

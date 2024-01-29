@@ -35,6 +35,9 @@ public class League {
 
     private String description;
 
+    @OneToMany(mappedBy = "league")
+    private List<Team> teams;
+
     @OneToMany(fetch = FetchType.LAZY,mappedBy = "league")
     @JsonIgnoreProperties("league")
     private List<Match> matches;
