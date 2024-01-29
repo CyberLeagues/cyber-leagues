@@ -8,7 +8,7 @@
 <div class="container mt-5">
     <div th:if="${#lists.isEmpty(leagues)}" class="no-leagues-message d-flex justify-content-center align-items-center vh-100">
         <div class="text-center">
-            <h1 class="display-3">Brak aktualnie lig</h1>
+            <h1 class="display-5">Brak aktualnie lig</h1>
         </div>
     </div>
     <div class="card mb-3" th:each="league : ${leagues}" th:unless="${#lists.isEmpty(leagues)}">

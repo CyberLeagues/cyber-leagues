@@ -1,22 +1,22 @@
 <!DOCTYPE html>
-<html lang="pl" xmlns:sec="http://www.w3.org/1999/xhtml">
-<head th:replace="~{head::head}">
-</head>
-
+<html lang="pl">
+<head th:replace="~{head::head}"></head>
 
 <body>
 <nav th:replace="~{navbar::navibar}"></nav>
 
-<div th:if="${user.team.owner.providerId} == ${user.providerId} ">
-    <div>
+<div th:if="${user.team.owner.providerId} == ${user.providerId}">
+    <div class="container mt-4">
+        <h3>Zaproś nowych zawodników:</h3>
         <form action="#" th:action="@{/invitation/create}" th:object="${invitation}" method="post">
-        <div class="form-group">
-            <label>Zawodnicy:</label>
-            <select th:field="*{user.providerId}" class="form-control" id="zawodnik" required>
-                <option th:if="${!user.team.players.contains(userToInvite)}" th:each="userToInvite : ${users}"
-                        th:value="${userToInvite.providerId}" th:text="${userToInvite.name}"></option>
-            </select>
-        </div>
+            <div class="form-group">
+                <label for="zawodnik">Zawodnicy:</label>
+                <select th:field="*{user.providerId}" class="form-control" id="zawodnik" required>
+                    <option th:if="${!user.team.players.contains(userToInvite)}"
+                            th:each="userToInvite : ${users}" th:value="${userToInvite.providerId}"
+                            th:text="${userToInvite.name}"></option>
+                </select>
+            </div>
             <select style="display: none" th:field="*{team.id}">
                 <option th:value="${user.team.id}"></option>
             </select>
@@ -24,18 +24,22 @@
         </form>
     </div>
 
-    <div>
-       <form action=# th:action="@{/team/delete}" th:object="${user}" method="post"  th:each="player : ${user.team.players}">
-           <select style="display: none" th:field="*{providerId}">
-               <option th:value="${player.providerId}"></option>
-           </select>
-           <span th:text="${player.name}"></span>
-           <span th:if="${player.providerId} != ${user.team.owner.providerId}">
-            <button type="submit" class="btn btn-primary">Usuń</button>
-           </span>
-       </form>
+    <div class="container mt-4">
+        <h3>Usuń zawodników:</h3>
+        <ul class="list-group">
+            <li th:each="player : ${user.team.players}" class="list-group-item d-flex justify-content-between align-items-center">
+                <span th:text="${player.name}"></span>
+                <form action="#" th:action="@{/team/delete}" th:object="${user}" method="post">
+                    <select style="display: none" th:field="*{providerId}">
+                        <option th:value="${player.providerId}"></option>
+                    </select>
+                    <span th:if="${player.providerId} != ${user.team.owner.providerId}">
+                        <button type="submit" class="btn btn-danger">Usuń</button>
+                    </span>
+                </form>
+            </li>
+        </ul>
     </div>
-
 </div>
 
 <div th:replace="~{footer::footer}"></div>
