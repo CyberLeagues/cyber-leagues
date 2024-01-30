@@ -2,7 +2,6 @@ package pl.cyberleagues.cyberleaguesmodule.services;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import pl.cyberleagues.cyberleaguesmodule.listobjectfolder.ListHolderContainer;
 import pl.cyberleagues.cyberleaguesmodule.models.Team;
 import pl.cyberleagues.cyberleaguesmodule.models.User;
 import pl.cyberleagues.cyberleaguesmodule.repositories.TeamRepository;
